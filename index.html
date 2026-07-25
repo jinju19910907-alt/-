@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>화순전남대학교병원 길찾기</title>
+
+<style>
+
+body{
+    font-family:'맑은 고딕',sans-serif;
+    background:#f5f5f5;
+    margin:0;
+}
+
+.header{
+    background:#005BAC;
+    color:white;
+    text-align:center;
+    padding:20px;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.card{
+    width:90%;
+    max-width:650px;
+    margin:30px auto;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+button{
+
+    width:100%;
+    padding:18px;
+    margin:10px 0;
+
+    font-size:22px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#007BFF;
+    color:white;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+button:hover{
+
+    background:#0056b3;
+
+    transform:scale(1.02);
+
+}
+
+.result{
+
+    margin-top:25px;
+
+    background:#eef7ff;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    font-size:21px;
+
+    line-height:42px;
+
+    text-align:center;
+
+}
+
+.result h2{
+
+    color:#005BAC;
+
+}
+
+.result img{
+
+    width:100%;
+
+    max-width:700px;
+
+    height:auto;
+
+    display:block;
+
+    margin:15px auto;
+
+    border-radius:15px;
+
+    border:2px solid #ddd;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+.result img:hover{
+
+    transform:scale(1.02);
+
+}
+/* 사진 확대창 */
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.85);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.modal img{
+
+    max-width:95%;
+
+    max-height:95%;
+
+    border-radius:15px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+🏥 화순전남대학교병원 길찾기
+
+</div>
+
+<div class="card">
+
+<h2>현재 위치</h2>
+
+<h1>📍 52병동</h1>
+
+<hr>
+
+<h2>목적지를 선택하세요</h2>
+
+<button onclick="showEmergencyOffice()">🚑 응급실 · 💳 원무과</button>
+
+<button onclick="showMRI()">🧲 MRI실</button>
+
+<button onclick="showCT()">🩻 CT실</button>
+
+<button onclick="showIntervention()">💉 인터벤션실</button>
+
+<button onclick="showParking()">🚗 10주차장</button>
+
+<button onclick="showEndoscopy()">🩺 내시경실</button>
+
+<button onclick="showUltrasound()">📡 초음파실</button>
+
+<button onclick="showXray()">🦴 X-RAY실</button>
+
+<button onclick="showNuclear()">☢️ 핵의학과</button>
+
+<button onclick="showRT()">🎯 방사선치료실(RT)</button>
+
+<button onclick="showGI()">🩺 소화기내과</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+const result=document.getElementById("result");
+
+// ==========================
+// 응급실 · 원무과
+// ==========================
+
+function showEmergencyOffice(){
+
+result.innerHTML=`
+
+<div class="result">
+
+<h2>🚑 응급실 · 💳 원무과</h2>
+
+<img src="./a.png">
+
+① 가까운 엘리베이터 이용 🛗
+
+<br><br>
+
+⬇
+
+<br><br>
+
+② 1층으로 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+③ 응급실 · 원무과 방향 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+✅ 도착
+
+</div>
+
+`;
+
+}
+
+
+// ==========================
+// MRI
+// ==========================
+
+function showMRI(){
+
+result.innerHTML=`
+
+<div class="result">
+
+<h2>🧲 MRI실</h2>
+
+<img src="./b.png">
+
+① 가까운 엘리베이터 이용 🛗
+
+<br><br>
+
+⬇
+
+<br><br>
+
+② 1층으로 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+③ MRI실 방향 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+✅ MRI실 도착
+
+</div>
+
+`;
+
+}
+
+
+// ==========================
+// CT
+// ==========================
+
+function showCT(){
+
+result.innerHTML=`
+
+<div class="result">
+
+<h2>🩻 CT실</h2>
+
+<img src="./c.png">
+
+① 가까운 엘리베이터 이용 🛗
+
+<br><br>
+
+⬇
+
+<br><br>
+
+② 1층으로 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+③ CT실 방향 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+✅ CT실 도착
+
+</div>
+
+`;
+
+}
+
+
+// ==========================
+// 인터벤션실
+// ==========================
+
+function showIntervention(){
+
+result.innerHTML=`
+
+<div class="result">
+
+<h2>💉 인터벤션실</h2>
+
+<img src="./d.png">
+
+① 가까운 엘리베이터 이용 🛗
+
+<br><br>
+
+⬇
+
+<br><br>
+
+② 1층으로 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+③ 인터벤션실 방향 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+✅ 인터벤션실 도착
+
+</div>
+
+`;
+
+}
+
+// ==========================
+// 10주차장
+// ==========================
+
+function showParking(){
+
+result.innerHTML=`
+
+<div class="result">
+
+<h2>🚗 10주차장</h2>
+
+<img src="./e.png">
+
+① 가까운 엘리베이터 이용 🛗
+
+<br><br>
+
+⬇
+
+<br><br>
+
+② 1층으로 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+③ 중앙출입구 방향 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+④ 10주차장 방향 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+✅ 10주차장 도착
+
+</div>
+
+`;
+
+}
+
+
+// ==========================
+// 내시경실
+// ==========================
+
+function showEndoscopy(){
+
+result.innerHTML=`
+
+<div class="result">
+
+<h2>🩺 내시경실</h2>
+
+<img src="./f.png">
+
+① 가까운 엘리베이터 이용 🛗
+
+<br><br>
+
+⬇
+
+<br><br>
+
+② 1층으로 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+③ 내시경실 방향 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+✅ 내시경실 도착
+
+</div>
+
+`;
+
+}
+
+
+// ==========================
+// 초음파실
+// ==========================
+
+function showUltrasound(){
+
+result.innerHTML=`
+
+<div class="result">
+
+<h2>📡 초음파실</h2>
+
+<img src="./g.png">
+
+① 가까운 엘리베이터 이용 🛗
+
+<br><br>
+
+⬇
+
+<br><br>
+
+② 1층으로 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+③ 초음파실 방향 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+✅ 초음파실 도착
+
+</div>
+
+`;
+
+}
+
+
+// ==========================
+// X-RAY
+// ==========================
+
+function showXray(){
+
+result.innerHTML=`
+
+<div class="result">
+
+<h2>🦴 X-RAY실</h2>
+
+<img src="./h.png">
+
+① 가까운 엘리베이터 이용 🛗
+
+<br><br>
+
+⬇
+
+<br><br>
+
+② 1층으로 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+③ X-RAY실 방향 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+✅ X-RAY실 도착
+
+</div>
+
+`;
+
+}
+
+// ==========================
+// 핵의학과
+// ==========================
+
+function showNuclear(){
+
+result.innerHTML=`
+
+<div class="result">
+
+<h2>☢️ 핵의학과</h2>
+
+<img src="./i.png">
+
+① 가까운 엘리베이터 이용 🛗
+
+<br><br>
+
+⬇
+
+<br><br>
+
+② 1층으로 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+③ 핵의학과 방향 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+✅ 핵의학과 도착
+
+</div>
+
+`;
+
+}
+
+
+// ==========================
+// 방사선치료실
+// ==========================
+
+function showRT(){
+
+result.innerHTML=`
+
+<div class="result">
+
+<h2>🎯 방사선치료실(RT)</h2>
+
+<img src="./j.png">
+
+① 가까운 엘리베이터 이용 🛗
+
+<br><br>
+
+⬇
+
+<br><br>
+
+② 1층으로 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+③ 방사선치료실(RT) 방향 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+✅ 방사선치료실 도착
+
+</div>
+
+`;
+
+}
+
+
+// ==========================
+// 소화기내과
+// ==========================
+
+function showGI(){
+
+result.innerHTML=`
+
+<div class="result">
+
+<h2>🩺 소화기내과</h2>
+
+<img src="./k.png">
+
+① 가까운 엘리베이터 이용 🛗
+
+<br><br>
+
+⬇
+
+<br><br>
+
+② 1층으로 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+③ 소화기내과 방향 이동
+
+<br><br>
+
+⬇
+
+<br><br>
+
+✅ 소화기내과 도착
+
+</div>
+
+`;
+
+}
+
+
+</script>
+
+<div id="imageModal" class="modal" onclick="closeImage()">
+
+    <img id="modalImg">
+
+</div>
+
+</body>
+
+</html>
